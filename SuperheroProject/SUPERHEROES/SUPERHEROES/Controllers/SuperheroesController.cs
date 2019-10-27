@@ -39,11 +39,11 @@ namespace SUPERHEROES.Controllers
 
         // POST: Superheroes/Create
         [HttpPost]
-        public ActionResult Create(SuperHero newSuperHero)
+        public ActionResult Create(SuperHero superHero)
         {
             try
             {
-                context.Superheroes.Add(newSuperHero);
+                context.Superheroes.Add(superHero);
                 context.SaveChanges();
                 return RedirectToAction("Index");
             }
