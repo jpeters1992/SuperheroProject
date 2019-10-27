@@ -56,7 +56,8 @@ namespace SUPERHEROES.Controllers
         // GET: Superheroes/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            SuperHero superHero = context.Superheroes.Where(s => s.Id == id).SingleOrDefault();
+            return View(superHero);
         }
 
         // POST: Superheroes/Edit/5
@@ -65,7 +66,13 @@ namespace SUPERHEROES.Controllers
         {
             try
             {
-                // TODO: Add update logic here
+                SuperHero editedSuperHero = context.Superheroes.Find(id);
+                editedSuperHero.Name = superHero.Name;
+                editedSuperHero.AlterEgo = superHero.AlterEgo;
+                editedSuperHero.PrimaryAbility = superHero.PrimaryAbility;
+                editedSuperHero.SecondaryAbility = superHero.SecondaryAbility;
+                editedSuperHero.CatchPhrase = superHero.CatchPhrase;
+                context.SaveChanges();
 
                 return RedirectToAction("Index");
             }
