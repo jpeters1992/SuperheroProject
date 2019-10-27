@@ -20,12 +20,13 @@ namespace SUPERHEROES.Controllers
         // GET: Superheroes
         public ActionResult Index()
         {
-            return View();
+            return View(context.Superheroes.ToList());
         }
 
         // GET: Superheroes/Details/5
         public ActionResult Details(int id)
         {
+            SuperHero superHero = context.Superheroes.Where(s => s.Id == id).SingleOrDefault();
             return View();
         }
 
